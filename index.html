@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>أورا إيسنس — هندسة العطور</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: "#F5F5DC",
+          charcoal: "#333333",
+          gold: "#D4AF37",
+        },
+        fontFamily: {
+          serif: ["'Amiri'", "serif"],
+          sans: ["'Cairo'", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Cairo', sans-serif; font-weight: 300; }
+  .font-display { font-family: 'Amiri', serif; }
+  ::selection { background: #D4AF37; color: #fff; }
+
+  .grain {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+
+  .bottle-glow {
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.18), transparent 65%);
+  }
+
+  .toggle-pill input:checked + label {
+    background: #333333; color: #F5F5DC;
+  }
+
+  .hover-gold { transition: color .4s ease; }
+  .hover-gold:hover { color: #D4AF37; }
+
+  .reveal-line { position: relative; }
+  .reveal-line::after {
+    content: ""; position: absolute; right: 0; bottom: -2px;
+    width: 0; height: 1px; background: #D4AF37; transition: width .5s ease;
+  }
+  .reveal-line:hover::after { width: 100%; }
+
+  .pyramid-row:hover { background: rgba(212,175,55,0.04); }
+</style>
+</head>
+<body class="bg-cream text-charcoal antialiased relative">
+
+<div class="grain pointer-events-none fixed inset-0 opacity-[0.07] z-50 mix-blend-multiply"></div>
+
+<header class="absolute top-0 left-0 right-0 z-30">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-6 flex items-center justify-between">
+    <button aria-label="القائمة" class="hover-gold">
+      <i data-lucide="menu" class="w-5 h-5" stroke-width="1"></i>
+    </button>
+
+    <a href="#" class="font-display text-xl md:text-2xl tracking-[0.2em] uppercase">
+      أورا <span class="text-gold">·</span> إيسنس
+    </a>
+
+    <button aria-label="الحقيبة" class="hover-gold relative">
+      <i data-lucide="shopping-bag" class="w-5 h-5" stroke-width="1"></i>
+      <span class="absolute -top-1 -left-2 text-[9px] text-gold tracking-widest">٠١</span>
+    </button>
+  </div>
+</header>
+
+<section class="relative min-h-screen pt-32 pb-20 px-6 md:px-10 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto grid md:grid-cols-12 gap-8 items-center min-h-[80vh]">
+
+    <div class="md:col-span-7 relative z-10 order-2 md:order-1">
+      <div class="flex items-center gap-3 mb-8 text-[10px] tracking-[0.2em] uppercase text-charcoal/60">
+        <span class="w-8 h-px bg-gold inline-block"></span>
+        <span>دار العطور · جراس، فرنسا</span>
+      </div>
+
+      <h1 class="font-display text-[12vw] md:text-[8vw] leading-[1.1] text-charcoal">
+        هندسة <em class="text-gold not-italic font-light">العبير</em><br/>
+        <span class="italic font-light">وفن الشذا.</span>
+      </h1>
+
+      <p class="mt-10 max-w-md text-charcoal/70 leading-[1.9] text-[15px]">
+        صُممت في دفعات صغيرة من نباتات نادرة، استُخلصت يدوياً، وعُتقت في خشب الأرز. كل قارورة تحمل قصة موسم، وتربة، وحصاد واحد فريد.
+      </p>
+
+      <div class="mt-12 flex flex-wrap items-center gap-8">
+        <a href="#spotlight" class="group inline-flex items-center gap-4 bg-charcoal text-cream px-8 py-4 text-[11px] tracking-[0.2em] uppercase hover:bg-gold transition-colors duration-500">
+          تسوق المجموعة
+          <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" stroke-width="1.25"></i>
+        </a>
+        <a href="#pyramid" class="reveal-line text-[11px] tracking-[0.2em] uppercase text-charcoal/70 hover-gold">
+          اكتشف التكوين العطري
+        </a>
+      </div>
+    </div>
+
+    <div class="md:col-span-5 relative h-[60vh] md:h-[80vh] flex items-center justify-center order-1 md:order-2">
+      <div class="absolute inset-0 bottle-glow"></div>
+
+      <svg viewBox="0 0 200 360" class="relative h-full w-auto drop-shadow-[0_30px_40px_rgba(51,51,51,0.15)]" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#F5F5DC" stop-opacity="0.9"/>
+            <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#333333" stop-opacity="0.35"/>
+          </linearGradient>
+          <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#333333"/>
+            <stop offset="100%" stop-color="#1a1a1a"/>
+          </linearGradient>
+        </defs>
+        <rect x="78" y="20" width="44" height="60" fill="url(#cap)" />
+        <rect x="74" y="78" width="52" height="10" fill="#D4AF37" />
+        <rect x="86" y="88" width="28" height="22" fill="url(#glass)" stroke="#333" stroke-width="0.5"/>
+        <path d="M40 130 Q40 110 70 110 L130 110 Q160 110 160 130 L160 320 Q160 345 135 345 L65 345 Q40 345 40 320 Z" fill="url(#glass)" stroke="#333" stroke-width="0.8"/>
+        <path d="M55 200 L145 200 L145 320 Q145 335 130 335 L70 335 Q55 335 55 320 Z" fill="#D4AF37" opacity="0.18"/>
+        <rect x="65" y="220" width="70" height="80" fill="#F5F5DC" stroke="#D4AF37" stroke-width="0.5" opacity="0.95"/>
+        <text x="100" y="248" text-anchor="middle" font-family="Amiri" font-style="italic" font-size="14" fill="#333">Aura</text>
+        <text x="100" y="268" text-anchor="middle" font-family="Cairo" font-size="6" letter-spacing="2" fill="#333">ESSENCE</text>
+        <line x1="80" y1="278" x2="120" y2="278" stroke="#D4AF37" stroke-width="0.5"/>
+        <text x="100" y="290" text-anchor="middle" font-family="Cairo" font-size="4.5" letter-spacing="1.5" fill="#333" opacity="0.6">N° 01 · 50ML</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="absolute bottom-4 left-0 right-0 flex justify-between px-6 md:px-10 text-[10px] tracking-[0.2em] uppercase text-charcoal/40">
+    <span>تأسست ٢٠٢٤</span>
+    <span class="hidden md:inline">ماء عطر · ٥٠ مل · نباتي · لم يختبر على الحيوانات</span>
+    <span>مرر للأسفل ↓</span>
+  </div>
+</section>
+
+<section id="pyramid" class="px-6 md:px-10 py-32 border-t border-charcoal/10">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-center mb-20">
+      <span class="text-[10px] tracking-[0.4em] uppercase text-gold">— ٢ · التكوين —</span>
+      <h2 class="font-display text-5xl md:text-7xl mt-6 leading-tight">هرم العطر</h2>
+      <p class="mt-6 text-charcoal/60 max-w-xl mx-auto leading-[1.9] text-[15px]">
+        تتكشف الرائحة في ثلاث حركات — كل مكون تم اختياره بعناية ليأخذ مكانه في الزمن.
+      </p>
+    </div>
+
+    <div class="space-y-px">
+      <div class="pyramid-row mx-auto max-w-[55%] border-t border-b border-charcoal/15 py-10 px-8 grid grid-cols-12 gap-4 items-center">
+        <span class="col-span-2 text-[10px] tracking-[0.1em] uppercase text-gold">القمة</span>
+        <div class="col-span-7">
+          <h3 class="font-display italic text-3xl md:text-4xl">الحمضيات والبرغموت</h3>
+          <p class="text-xs text-charcoal/60 mt-2">الانطباع الأول — مشرق، عابر، ومضيء.</p>
+        </div>
+        <span class="col-span-3 text-left text-[10px] tracking-[0.1em] text-charcoal/40">٠-١٥ دقيقة</span>
+      </div>
+
+      <div class="pyramid-row mx-auto max-w-[78%] border-b border-charcoal/15 py-12 px-8 grid grid-cols-12 gap-4 items-center">
+        <span class="col-span-2 text-[10px] tracking-[0.1em] uppercase text-gold">القلب</span>
+        <div class="col-span-7">
+          <h3 class="font-display italic text-3xl md:text-5xl">الياسمين وزهر البرتقال</h3>
+          <p class="text-xs text-charcoal/60 mt-2">روح التكوين — زهري، حميمي، ومستمر.</p>
+        </div>
+        <span class="col-span-3 text-left text-[10px] tracking-[0.1em] text-charcoal/40">١٥ د - ٣ ساعات</span>
+      </div>
+
+      <div class="pyramid-row mx-auto max-w-full border-b border-charcoal/15 py-14 px-8 grid grid-cols-12 gap-4 items-center">
+        <span class="col-span-2 text-[10px] tracking-[0.1em] uppercase text-gold">القاعدة</span>
+        <div class="col-span-7">
+          <h3 class="font-display italic text-3xl md:text-6xl">خشب الصندل والمسك</h3>
+          <p class="text-xs text-charcoal/60 mt-2">البصمة النهائية — دافئة، راسخة، وتبقى على البشرة.</p>
+        </div>
+        <span class="col-span-3 text-left text-[10px] tracking-[0.1em] text-charcoal/40">٣ - ٨+ ساعات</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spotlight" class="px-6 md:px-10 py-32 border-t border-charcoal/10">
+  <div class="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div class="relative aspect-square bg-gradient-to-br from-cream to-[#ebe9d0] flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bottle-glow opacity-50"></div>
+      <svg viewBox="0 0 200 360" class="h-[80%] w-auto drop-shadow-2xl">
+         <rect x="78" y="20" width="44" height="60" fill="#333"/>
+         <rect x="74" y="78" width="52" height="10" fill="#D4AF37"/>
+         <path d="M40 130 Q40 110 70 110 L130 110 Q160 110 160 130 L160 320 Q160 345 135 345 L65 345 Q40 345 40 320 Z" fill="rgba(212,175,55,0.2)" stroke="#333" stroke-width="0.8"/>
+         <rect x="65" y="220" width="70" height="80" fill="#F5F5DC" stroke="#D4AF37" stroke-width="0.5"/>
+      </svg>
+    </div>
+
+    <div>
+      <span class="text-[10px] tracking-[0.4em] uppercase text-gold">— ماء عطر</span>
+      <h2 class="font-display text-5xl md:text-6xl mt-4 leading-none">أورا <em>رقم ٠١</em></h2>
+      <p class="font-display italic text-xl text-charcoal/60 mt-2">الإصدار الأول · ٥٠ مل</p>
+      <div class="my-8 h-px bg-charcoal/15"></div>
+      <p class="text-charcoal/70 leading-[1.9] text-[15px]">تركيبتنا الافتتاحية. دراسة في الانضباط — يبدأ بالبرغموت والياسمين لينتهي بلمسة عميقة من دخان خشب الأرز.</p>
+      <div class="mt-10 flex items-baseline gap-3">
+        <span class="font-display text-4xl">٨٥٠ درهم</span>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <button class="flex-1 bg-charcoal text-cream py-4 px-8 text-[11px] tracking-[0.2em] uppercase hover:bg-gold transition-colors duration-500 inline-flex items-center justify-center gap-3">
+          إضافة إلى السلة
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="px-6 md:px-10 py-16 bg-cream border-t border-charcoal/10">
+  <div class="max-w-[1400px] mx-auto text-center">
+    <span class="font-display text-2xl tracking-[0.3em] uppercase">أورا <span class="text-gold">·</span> إيسنس</span>
+    <p class="mt-8 text-[10px] tracking-[0.3em] uppercase text-charcoal/40">© ٢٠٢٦ أورا إيسنس — صُنع بشغف</p>
+  </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

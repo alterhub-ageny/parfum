@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18+ Content Portal</title>
+    <style>
+        /* Base Styles & Dark Theme */
+        :root {
+            --bg-color: #0f0f0f;
+            --surface-color: #1a1a1a;
+            --primary-color: #ff9000; /* Standard industry accent color */
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Age Verification Overlay */
+        #age-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal {
+            background-color: var(--surface-color);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .modal h1 {
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            transition: background 0.2s;
+        }
+
+        .btn-enter {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .btn-enter:hover {
+            background-color: #e07d00;
+        }
+
+        .btn-exit {
+            background-color: #333;
+            color: var(--text-main);
+        }
+
+        .btn-exit:hover {
+            background-color: #444;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--surface-color);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Content Grid */
+        main {
+            padding: 30px 5%;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 150px;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 8px;
+            /* Placeholder for actual images: background-image: url('...'); */
+        }
+
+        .duration {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .info {
+            padding: 12px;
+        }
+
+        .info h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .info p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Age Verification Gate -->
+    <div id="age-gate">
+        <div class="modal">
+            <h1>Age Verification</h1>
+            <p>This website contains age-restricted material.<br>You must be 18 years or older to enter.</p>
+            <button class="btn btn-enter" onclick="enterSite()">I am 18 or older - Enter</button>
+            <button class="btn btn-exit" onclick="exitSite()">I am under 18 - Exit</button>
+        </div>
+    </div>
+
+    <!-- Main Website -->
+    <header>
+        <div class="logo">Adult<span>Portal</span></div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Categories</a>
+            <a href="#">Top Rated</a>
+            <a href="#">Live</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Trending Now</h2>
+        <div class="video-grid">
+            
+            <!-- Video Card Template (Repeat as needed) -->
+            <div class="card">
+                <div class="thumbnail">
+                    <span class="duration">10:45</span>
+                </div>
+                <div class="info">
+                    <h3>Video Title Placeholder 1</h3>
+                    <p>98% Rating • 1.2M Views</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="thumbnail">
+                    <span class="duration">08:20</span>
+                </div>
+                <div class="info">
+                    <h3>Video Title Placeholder 2</h3>
+                    <p>95% Rating • 850K Views</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="thumbnail">
+                    <span class="duration">15:00</span>
+                </div>
+                <div class="info">
+                    <h3>Video Title Placeholder 3</h3>
+                    <p>100% Rating • 2.1M Views</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="thumbnail">
+                    <span class="duration">05:30</span>
+                </div>
+                <div class="info">
+                    <h3>Video Title Placeholder 4</h3>
+                    <p>89% Rating • 400K Views</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="thumbnail">
+                    <span class="duration">12:15</span>
+                </div>
+                <div class="info">
+                    <h3>Video Title Placeholder 5</h3>
+                    <p>92% Rating • 620K Views</p>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <script>
+        // Check if the user has already verified their age in a previous session
+        window.onload = function() {
+            if (localStorage.getItem('ageVerified') === 'true') {
+                document.getElementById('age-gate').style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            } else {
+                document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
+            }
+        };
+
+        function enterSite() {
+            // Hide the modal
+            document.getElementById('age-gate').style.display = 'none';
+            // Restore scrolling
+            document.body.style.overflow = 'auto';
+            // Save verification to localStorage so they aren't asked again on reload
+            localStorage.setItem('ageVerified', 'true');
+        }
+
+        function exitSite() {
+            // Redirect underage users away from the site
+            window.location.href = "https://www.google.com";
+        }
+    </script>
+</body>
+</html>
